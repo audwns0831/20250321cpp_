@@ -59,7 +59,7 @@ int main() {
 	string key_;
 	cout << "방향을 입력하세요 (Up, Down, Left, Right) : ";
 	cin >> key_;
-	// test
+	//Direction::
 	switch (key)
 	{
 	case Up:
