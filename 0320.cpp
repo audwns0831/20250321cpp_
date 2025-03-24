@@ -18,7 +18,7 @@ int randomGame(int num, int* ptr) {
 	return num > *ptr ? 1 : (num < *ptr ? -1 : 0);
 }
 int main_0320() {
-	
+	// macos test 0320
 	/*int num;
 	cout << "숫자를 입력하세요 :";
 	cin  >> num;
