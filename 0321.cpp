@@ -71,7 +71,7 @@ void print_puzzle(int** puzzle, int size) {
 		std::cout << endl;
 	}
 }
-int main() {
+int main_0321() {
 
 	/*
 	* 숫자퍼즐게임

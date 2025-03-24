@@ -130,6 +130,7 @@
     <ClCompile Include="0319.cpp" />
     <ClCompile Include="0320.cpp" />
     <ClCompile Include="0321.cpp" />
+    <ClCompile Include="0324.cpp" />
     <ClCompile Include="Array.cpp" />
     <ClCompile Include="Conditional.cpp" />
     <ClCompile Include="Function.cpp" />
@@ -140,6 +141,8 @@
     <ClCompile Include="Operator.cpp" />
     <ClCompile Include="Pointer.cpp" />
     <ClCompile Include="STL.cpp" />
+    <ClCompile Include="String.cpp" />
+    <ClCompile Include="Struct.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />
