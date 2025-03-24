@@ -131,21 +131,35 @@
     <ClCompile Include="0320.cpp" />
     <ClCompile Include="0321.cpp" />
     <ClCompile Include="0324.cpp" />
+    <ClCompile Include="0324_Practice.cpp" />
     <ClCompile Include="Array.cpp" />
+    <ClCompile Include="Class.cpp" />
+    <ClCompile Include="Class2.cpp" />
+    <ClCompile Include="Class3.cpp" />
     <ClCompile Include="Conditional.cpp" />
+    <ClCompile Include="Dummy.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="Hello.cpp" />
     <ClCompile Include="DataType.cpp" />
     <ClCompile Include="Iteration.cpp" />
     <ClCompile Include="Memory.cpp" />
+    <ClCompile Include="OOP.cpp" />
+    <ClCompile Include="OOP_Abstraction.cpp" />
+    <ClCompile Include="OOP_Encapsulation.cpp" />
+    <ClCompile Include="OOP_Inheritance.cpp" />
+    <ClCompile Include="OOP_Polymorphism.cpp" />
     <ClCompile Include="Operator.cpp" />
     <ClCompile Include="Pointer.cpp" />
+    <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="STL.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="Struct.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dummy.h" />
     <ClInclude Include="header.h" />
+    <ClInclude Include="practice.h" />
+    <ClInclude Include="practice_n.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

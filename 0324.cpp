@@ -17,7 +17,7 @@ struct Student {
 
 enum Direction { Up, Down, Left, Right }; // 열거형 정의 : 열거형 이름과 멤버이름을 작성
 
-int main() {
+int main_0324() {
 
 	string str1 = "Hello";
 	string str2 = "World";
@@ -55,7 +55,7 @@ int main() {
 	cout << "학생 이름: " << lee.name << ", 평균 점수 : " << lee.Average() << ", " << (lee.Average() >= 60 ? "합격" : "불합격") << endl;
 
 
-	Direction key;
+	Direction key = Up;
 	string key_;
 	cout << "방향을 입력하세요 (Up, Down, Left, Right) : ";
 	cin >> key_;
