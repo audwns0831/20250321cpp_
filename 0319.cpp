@@ -2,35 +2,35 @@
 #include <string>
 
 using namespace std;
-
+//testest
 int main_0319() {
 
 	
-	///**1¹ø¹®Á¦**/
+	///**1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**/
 	//int iValue = 42;
 	//float fValue = 3.14f;
 	//double dValue = 5.6789;
 	//char cValue = 'A';
 
-	//cout << "int º¯¼ö : " << iValue << endl;
-	//cout << "float º¯¼ö: " << fValue << endl;
-	//cout << "double º¯¼ö: " << dValue << endl;
-	//cout << "char º¯¼ö: " << cValue << endl;	
+	//cout << "int ï¿½ï¿½ï¿½ï¿½ : " << iValue << endl;
+	//cout << "float ï¿½ï¿½ï¿½ï¿½: " << fValue << endl;
+	//cout << "double ï¿½ï¿½ï¿½ï¿½: " << dValue << endl;
+	//cout << "char ï¿½ï¿½ï¿½ï¿½: " << cValue << endl;	
 
-	///**2¹ø¹®Á¦**/
+	///**2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**/
 	//short x = 100;
 	//long y = x;
 
-	//cout << "short º¯¼öx: " << x << endl;
-	//cout << "long º¯¼öy: " << y << endl;
+	//cout << "short ï¿½ï¿½ï¿½ï¿½x: " << x << endl;
+	//cout << "long ï¿½ï¿½ï¿½ï¿½y: " << y << endl;
 
-	///**3¹ø¹®Á¦**/
+	///**3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**/
 	//const int MAX = 500;
-	//cout << "const int »ó¼ö: " << MAX << endl;
+	//cout << "const int ï¿½ï¿½ï¿½: " << MAX << endl;
 
-	//// MAX = 1000; // error, const ´Â º¯°æÇÒ ¼ö ¾ø´Â read-only ÇüÅÂÀÌ±â ¶§¹®
+	//// MAX = 1000; // error, const ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ read-only ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	// ¿¬»ê 1¹ø¹®Á¦
+	// ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	int a = 10;
 	int b = 20;
 	cout << "1. a + b : " << (a + b) << endl;
@@ -40,7 +40,7 @@ int main_0319() {
 	a = b + 5;
 	cout << "5. a = b + 5 : " << a << endl;
 
-	// ¿¬»ê 2¹ø ¹®Á¦
+	// ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int x = 5;
 	int y = 10;
 	bool aBool = x > y;
@@ -52,16 +52,16 @@ int main_0319() {
 	cout << "3. x <= y : " << (x <= y) << endl;
 
 	
-	// ¿¬»ê 3¹ø ¹®Á¦
+	// ï¿½ï¿½ï¿½ï¿½ 3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	x = true;
 	y = false;
 	//bool x = true;
 	//bool y = false;
 
-	cout << "1. Not¿¬»ê : x : " << !(x) << ", y : " << !(y) << endl;
-	cout << "1. And¿¬»ê : x && y = " << (x && y) << endl;
-	cout << "1. Or¿¬»ê : x || y = " << (x || y) << endl;
-	cout << "1. Á¶°ÇºÎ¿¬»ê : false && (++x) = " << (false && (++x)) << ", true || (++y) = " << (true || (++y)) << ", x = " << x << ", y = " << y << endl;
+	cout << "1. Notï¿½ï¿½ï¿½ï¿½ : x : " << !(x) << ", y : " << !(y) << endl;
+	cout << "1. Andï¿½ï¿½ï¿½ï¿½ : x && y = " << (x && y) << endl;
+	cout << "1. Orï¿½ï¿½ï¿½ï¿½ : x || y = " << (x || y) << endl;
+	cout << "1. ï¿½ï¿½ï¿½ÇºÎ¿ï¿½ï¿½ï¿½ : false && (++x) = " << (false && (++x)) << ", true || (++y) = " << (true || (++y)) << ", x = " << x << ", y = " << y << endl;
 
 
 	return 0;
