@@ -20,7 +20,7 @@ struct Point {
 		y = _y;
 	}
 };
-struct Student {
+struct Student_ {
 	// 멤버변수
 	string name;
 	int math;
@@ -55,7 +55,7 @@ enum Direction { Up, Down, Left, Right }; // 열거형 정의 : 열거형 이름과 멤버이�
 enum Season { Spring, Summer, Autumn = 10, Winter };
 enum class Color { Red, Green, Blue };
 
-int main() {
+int main_struct() {
 	/*
 	* 구조체 (Struct)
 	* 하나 이상의 변수를 그룹지어서 새로운 자료형을 정의
@@ -67,28 +67,28 @@ int main() {
 	// 구조체에 포함한 변수를 멤버변수, 구조체에 포함한 함수를 멤버함수라고 함
 
 
-	Student hong; // 구조체 선언
-	hong.name = "홍길동";
-	hong.math = 60;
-	hong.english = 10;
-	hong.science = 100;
+	//Student hong; // 구조체 선언
+	//hong.name = "홍길동";
+	//hong.math = 60;
+	//hong.english = 10;
+	//hong.science = 100;
 
-	Student* ptr = &hong;
-	ptr->english = 80;
-	ptr->science = 90;
-	
+	//Student* ptr = &hong;
+	//ptr->english = 80;
+	//ptr->science = 90;
+	//
 
-	cout << "홍길동의 평균점수 : " << hong.Average() << endl;
+	//cout << "홍길동의 평균점수 : " << hong.Average() << endl;
 
-	// 파라미터가 없는 생성자
-	Monster monster = Monster();
+	//// 파라미터가 없는 생성자
+	//Monster monster = Monster();
 
-	// 파라미터가 있는 생성자로 구조체 선언
-	Monster dragon = Monster("드래곤", 250, 150);
-	Monster slime = Monster("슬라임", 10, 3);
+	//// 파라미터가 있는 생성자로 구조체 선언
+	//Monster dragon = Monster("드래곤", 250, 150);
+	//Monster slime = Monster("슬라임", 10, 3);
 
-	cout << "몬스터 이름: " << dragon.name << ", hp : " << dragon.hp << ", mp : " << dragon.mp << endl;
-	cout << "몬스터 이름: " << slime.name << ", hp : " << slime.hp << ", mp : " << slime.mp << endl;
+	//cout << "몬스터 이름: " << dragon.name << ", hp : " << dragon.hp << ", mp : " << dragon.mp << endl;
+	//cout << "몬스터 이름: " << slime.name << ", hp : " << slime.hp << ", mp : " << slime.mp << endl;
 
 	/*
 	* <열거형 선언>
@@ -98,7 +98,7 @@ int main() {
 	// <열거형 선언>
 	// enum 열거형이름 { 멤버목록 }
 	// 열거형은 이름으로 표현하기에 가독성이 좋음
-	Direction key = Left;
+	/*Direction key = Left;
 	switch (key)
 	{
 	case Up:
@@ -115,7 +115,7 @@ int main() {
 		break;
 	default:
 		break;
-	}
+	}*/
 
 	/*Season season = (Season)1;
 	cout << season << endl;
@@ -134,11 +134,11 @@ int main() {
 	* 자료형의 별칭을 생성하고 실제 자료형 이름 대신 사용
 	*/
 
-	typedef int myInt_t;					// 자료형 재정의는 _t로 끝내는걸 권장
-	typedef unsigned long long unit64_t;	// 복잡한 자료형의 간소화버전 생성
+	//typedef int myInt_t;					// 자료형 재정의는 _t로 끝내는걸 권장
+	//typedef unsigned long long unit64_t;	// 복잡한 자료형의 간소화버전 생성
 
-	myInt_t value1;
-	unit64_t value2;
+	//myInt_t value1;
+	//unit64_t value2;
 
 	return 0;
 }
