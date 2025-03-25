@@ -92,7 +92,9 @@ public:
 		if (item.type != "QuestItem") {
 			cout << " - subType : " << item.type2 << endl;
 		}
-		cout << " - Value : " << item.value<< endl;
+		if (item.value > 0) {
+			cout << " - Value : " << item.value << endl;
+		}
 		cout << "----------------------------------------" << endl;
 	}
 };
@@ -142,38 +144,28 @@ public:
 
 	void removeItem(int idx) { // idx = inventoryidx parameter
 		inventory.erase(inventory.begin() + idx);
-		//inventory.pop_back();
 	}
 
-	void useItem(int idx, StructItem* item) {
-		
-		//// 인벤토리에서 인덱스값으로 아이템인덱스 추출
-		//int itemIdx = getItemIdx(idx);
-		////StructItem usingItem = this->inventory[idx];
-		//StructItem usingItem = Item::getItem(inventory, itemIdx);
-		//// 소모 아이템이 아니라면 false 반환
-		//if(usingItem.type != "Consumable"){
-		//	return -1;
-		//} else {
-		//	removeItem(idx);
-		//	return idx;
-		//}
-		removeItem(idx);
+	// 소모품 사용
+	bool useItem(int idx, StructItem* item) { // parameter ( inventory_idx, item_info)
+		if (item->type == "Consumable") {
+			removeItem(idx);
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
-	void equipItem(int idx, StructItem* item) { // item 고유 idx parameter
-		//// 인벤토리에서 인덱스값으로 아이템인덱스 추출
-		//int itemIdx = getItemIdx(idx);
-		////StructItem usingItem = inventory.back();
-		//StructItem usingItem = Item::getItem(inventory, itemIdx);
-		//// 소모 아이템이 아니라면 false 반환
-		//if(usingItem.type != "Equip"){
-		//	return -1;
-		//} else {
-		//	removeItem(idx);
-		//	return idx;
-		//}
-		removeItem(idx);
+	// 아이템 장착
+	bool equipItem(int idx, StructItem* item) { // parameter ( inventory_idx, item_info)
+		if (item->type == "Equip") {
+			removeItem(idx);
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	int getItemIdx(int idx) {
@@ -226,44 +218,51 @@ public:
 		hp = 100;
 		mp = 100;
 		attack = 10;
-		defense = 10;
-	}
-	Player(int hp, int mp){
-		hp = hp;
-		mp = mp;
+		defense = 5;
 	}
 
-	void useItem(Inventory& inventory, int idx, StructItem* item) {
-		// 아이템 사용(소모품)
-		//int result = inventory.useItem(item->idx);
-		//int result = inventory.useItem(idx); // inventory idx로 사용
-		cout << item->type2 << endl;
-		if (item->type == "Consumable") {
-			if (item->type2 == "Hp") {
-				hp += item->value;
+	// 아이템 사용(소모품)
+	void useItem(Inventory& inventory, int idx, StructItem* item) {// 매개변수 (인벤토리, 인벤토리번호, 아이템정보)
+		bool uresult = inventory.useItem(idx, item); // parameter ( inventory_idx, item_info)
+		if (!uresult) { // useItem 이 아닐때 ( not consumable )
+			cout << "Can't Use Item" << endl;
+			return;
+		}
+		else {
+			if (item->type == "Consumable") {
+				if (item->type2 == "Hp") {
+					hp += item->value;
+				}
+				else if (item->type2 == "Mp") {
+					mp += item->value;
+				}
+				//inventory.useItem(idx, item);
 			}
-			else if (item->type2 == "Mp") {
-				mp += item->value;
-			}
-			inventory.useItem(idx, item);
 		}
 	}
 
-	void equipItem(Inventory& inventory, int idx, StructItem* item) {
-		// 아이템 장착(장착류)
-		//int result = inventory.equipItem(item->idx);
-		//int result = inventory.equipItem(idx); // inventory idx로 사용
-		auto fresult = find(equipment.begin(), equipment.end(), item->name);
-		if(item->type == "Equip" && fresult == equipment.end()) {
-			if(item->type2 == "Weapon"){
-				attack += item->value;
-			} else if(item->type2 == "Armor") {
-				defense += item->value;
+	// 아이템 장착(장착류)
+	void equipItem(Inventory& inventory, int idx, StructItem* item) { // 매개변수 (인벤토리, 인벤토리번호, 아이템정보)
+		bool eresult = inventory.equipItem(idx, item); // parameter ( inventory_idx, item_info)
+		if (!eresult) {
+			cout << "Can't Eqip Item." << endl;
+			return;
+		}
+		else {
+			auto fresult = find(equipment.begin(), equipment.end(), item->name);
+			if (item->type == "Equip" && fresult == equipment.end()) {
+				if (item->type2 == "Weapon") {
+					attack += item->value;
+				}
+				else if (item->type2 == "Armor") {
+					defense += item->value;
+				}
+				equipment.push_back(item->name);
+				//inventory.equipItem(idx, item);
 			}
-			equipment.push_back(item->name);
-			inventory.equipItem(idx, item);
-		} else if(fresult != equipment.end()){
-			cout << "already Equip" << endl;
+			else if (fresult != equipment.end()) {
+				cout << "already Equip" << endl;
+			}
 		}
 	}
 

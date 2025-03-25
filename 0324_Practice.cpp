@@ -37,10 +37,10 @@ int main() {
 	}
 
 	//cout << items[0].idx << endl;
-	ItemArray::iterator iter;
-	for (iter = items.begin(); iter != items.end(); iter++) {
+	//ItemArray::iterator iter;
+	/*for (iter = items.begin(); iter != items.end(); iter++) {
 		cout << iter[0].idx << iter[0].name << " "<< iter[0].type << " " << iter[0].type2 << endl;
-	}
+	}*/
 
 	Player player; // 플레이어 생성
 	player.showStats();
@@ -51,18 +51,22 @@ int main() {
 	while(inventory.questCount < 10){
 		srand((unsigned)time(NULL));
 		int randomItemNum = rand() % items.size();
+
 		items[randomItemNum].showItem();
 		inventory.addItem(&items[randomItemNum]);
 
 		int action, _inventory_action, _inventory_number;
+
 		cout << "[ Choose Your Action ]" << endl;
 		cout << "1. Use Item " << endl;
 		cout << "2. Equip Item " << endl;
 		cout << "3. Inventory " << endl;
 		cin >> action;
+
 		ItemArray _inventory = inventory.getInventory();
 		_inventory_number = _inventory.size() - 1;
 		if (_inventory_number < 0) _inventory_number = 0;
+
 		// Use Item
 		if (action == 1) {
 			player.useItem(inventory, _inventory_number, &items[randomItemNum]);
@@ -76,60 +80,26 @@ int main() {
 			_inventory_action = inventory.displayInventory();
 
 			if (_inventory_action == 1 or _inventory_action == 2) {
+
 				cout << " Choose Item Number : ";
 				cin >> _inventory_number;
+
 				int itemIdx = inventory.getItemIdx(_inventory_number);
 				itemInfo = item.getItem(items, itemIdx);
 				item.showItem(itemInfo);
-				cout << "debug2 : " << _inventory_number << ", itemIdx :  " << itemIdx << endl;
-				if (itemInfo.type == "Equip") {
-					player.equipItem(inventory, _inventory_number, &items[itemIdx]);
-				}
-				else if (itemInfo.type == "Consumable") {
+
+				if (_inventory_action == 1) { // 아이템 사용 함수
 					player.useItem(inventory, _inventory_number, &items[itemIdx]);
 				}
-			}
-			else {
+				else if (_inventory_action == 2) { // 아이템 장착 함수
+					player.equipItem(inventory, _inventory_number, &items[itemIdx]);
+				}
+				else {
+					cout << "Can't Use Item" << endl;
+				}
 			}
 		}
-		else {
 
-		}
-		cout << "debug" << endl;
-		//switch(action){
-		//	case 1:
-		//		player.useItem(inventory, randomItemNum, &items[randomItemNum]);
-		//		break;
-		//	case 2:
-		//		player.equipItem(inventory, randomItemNum, &items[randomItemNum]);
-		//		break;
-		//	case 3:
-		//		// cout << &inventory << " " << action << endl;
-		//		
-		//		
-		//		_inventory_action = inventory.displayInventory();
-		//		
-		//		if (_inventory_action == 1 or _inventory_action == 2) {
-		//			int _inventory_number;
-		//			cout << " Choose Item Number : ";
-		//			cin >> _inventory_number;
-		//			int itemIdx = inventory.getItemIdx(_inventory_number);
-		//			itemInfo = item.getItem(items, itemIdx);
-		//			item.showItem(itemInfo);
-		//			if (itemInfo.type == "Equip") {
-		//				player.equipItem(inventory, _inventory_number, &items[itemIdx]);
-		//			}
-		//			else if (itemInfo.type == "Consumable") {
-		//				player.useItem(inventory, _inventory_number, &items[itemIdx]);
-		//			}
-		//			break;
-		//		}
-		//		else {
-		//			break;
-		//		}
-		//	default:
-		//		break;
-		//}
 		if (inventory.questCount == 10 || player.hp <= 0) {// 퀘스트아이템 10개 획득 시 게임 종료
 			cout << endl;
 			cout << "----------------------------------------" << endl;
@@ -139,7 +109,6 @@ int main() {
 		}
 		player.endTurn();
 		player.showStats();
-
 	}
 
 	return 0;
