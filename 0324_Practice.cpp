@@ -1,28 +1,45 @@
 #include <iostream>
 #include "practice_n.h"
+#include <string>
 #include <cstdlib>
 #include <ctime>
-
+#include <algorithm>
 
 using namespace std;
 
-
 int main() {
+	vector<string> _itemArray[] = {
+		{"Equip", "LongSword", "Weapon", "30"},
+		{"Equip", "ShortSword", "Weapon", "10"},
+		{"Equip", "Upper", "Armor", "10"},
+		{"Equip", "Lower", "Armor", "10"},
+		{"Equip", "Glove", "Armor", "5"},
+		{"Equip", "Shoes", "Armor", "5"},
+		{"Equip", "Shield", "Armor", "20"},
+		{"QuestItem", "DragonTear", "QuestItem", "0"},
+		{"Consumable", "HpPotion", "Hp", "30"},
+		{"Consumable", "MpPotion", "Mp", "30"}
+	};
 
-	string itemNameArray[] = { "LongSword", "ShortSword", "Upper", "Lower", "Glove", "Shoes", "Shield", "DragonTear", "HpPotion", "MpPotion"};
-	string itemTypeArray[] = {"Equip", "Equip","Equip","Equip","Equip","Equip","Equip","QuestItem","Consumable","Consumable"};
-	string itemType2Array[] = {"Weapon", "Weapon", "Armor", "Armor", "Armor", "Armor", "Armor", "Hp", "Mp"};
-	int itemValueArray[] = {10, 5, 10, 10, 5, 5, 10, 0, 30, 30};
+	Item item;
 	ItemArray items;
+	StructItem itemInfo;
 
-	for(int i = 0; i < itemNameArray->size(); i++){
+	for (auto i : _itemArray) {
 		Item new_item;
-		new_item.idx = i;
-		new_item.name = itemNameArray[i];
-		new_item.type = itemTypeArray[i];
-		new_item.type2 = itemType2Array[i];
-		new_item.value = itemValueArray[i];
-		items.push_back(new_item);
+		new_item.setName(i[1]);
+		new_item.setType(i[0]);
+		new_item.setSubType(i[2]);
+		new_item.setValue(stoi(i[3]));
+		StructItem _new_item = new_item.setItem();
+		//cout << i[0] << " " << i[1] << " " << i[2] << " " << i[3] << endl;
+		items.push_back(_new_item);
+	}
+
+	//cout << items[0].idx << endl;
+	ItemArray::iterator iter;
+	for (iter = items.begin(); iter != items.end(); iter++) {
+		cout << iter[0].idx << iter[0].name << " "<< iter[0].type << " " << iter[0].type2 << endl;
 	}
 
 	Player player; // 플레이어 생성
@@ -30,60 +47,100 @@ int main() {
 	
 
 	Inventory inventory;
-	srand((unsigned)time(NULL));
 
 	while(inventory.questCount < 10){
-		int randomItemNum = rand() % itemNameArray->size();
-
+		srand((unsigned)time(NULL));
+		int randomItemNum = rand() % items.size();
 		items[randomItemNum].showItem();
 		inventory.addItem(&items[randomItemNum]);
 
-		int action;
+		int action, _inventory_action, _inventory_number;
 		cout << "[ Choose Your Action ]" << endl;
 		cout << "1. Use Item " << endl;
 		cout << "2. Equip Item " << endl;
 		cout << "3. Inventory " << endl;
 		cin >> action;
-
-		switch(action){
-			case 1:
-				player.useItem(inventory, randomItemNum, &items[randomItemNum]);
-				break;
-			case 2:
-				player.equipItem(inventory, randomItemNum, &items[randomItemNum]);
-				break;
-			case 3:
-				inventory.displayInventory();
-				break;
-			default:
-				break;
+		ItemArray _inventory = inventory.getInventory();
+		_inventory_number = _inventory.size() - 1;
+		if (_inventory_number < 0) _inventory_number = 0;
+		// Use Item
+		if (action == 1) {
+			player.useItem(inventory, _inventory_number, &items[randomItemNum]);
 		}
+		// Equip Item
+		else if (action == 2) {
+			player.equipItem(inventory, _inventory_number, &items[randomItemNum]);
+		}
+		// Inventory
+		else if (action == 3) {
+			_inventory_action = inventory.displayInventory();
 
+			if (_inventory_action == 1 or _inventory_action == 2) {
+				cout << " Choose Item Number : ";
+				cin >> _inventory_number;
+				int itemIdx = inventory.getItemIdx(_inventory_number);
+				itemInfo = item.getItem(items, itemIdx);
+				item.showItem(itemInfo);
+				cout << "debug2 : " << _inventory_number << ", itemIdx :  " << itemIdx << endl;
+				if (itemInfo.type == "Equip") {
+					player.equipItem(inventory, _inventory_number, &items[itemIdx]);
+				}
+				else if (itemInfo.type == "Consumable") {
+					player.useItem(inventory, _inventory_number, &items[itemIdx]);
+				}
+			}
+			else {
+			}
+		}
+		else {
+
+		}
+		cout << "debug" << endl;
+		//switch(action){
+		//	case 1:
+		//		player.useItem(inventory, randomItemNum, &items[randomItemNum]);
+		//		break;
+		//	case 2:
+		//		player.equipItem(inventory, randomItemNum, &items[randomItemNum]);
+		//		break;
+		//	case 3:
+		//		// cout << &inventory << " " << action << endl;
+		//		
+		//		
+		//		_inventory_action = inventory.displayInventory();
+		//		
+		//		if (_inventory_action == 1 or _inventory_action == 2) {
+		//			int _inventory_number;
+		//			cout << " Choose Item Number : ";
+		//			cin >> _inventory_number;
+		//			int itemIdx = inventory.getItemIdx(_inventory_number);
+		//			itemInfo = item.getItem(items, itemIdx);
+		//			item.showItem(itemInfo);
+		//			if (itemInfo.type == "Equip") {
+		//				player.equipItem(inventory, _inventory_number, &items[itemIdx]);
+		//			}
+		//			else if (itemInfo.type == "Consumable") {
+		//				player.useItem(inventory, _inventory_number, &items[itemIdx]);
+		//			}
+		//			break;
+		//		}
+		//		else {
+		//			break;
+		//		}
+		//	default:
+		//		break;
+		//}
+		if (inventory.questCount == 10 || player.hp <= 0) {// 퀘스트아이템 10개 획득 시 게임 종료
+			cout << endl;
+			cout << "----------------------------------------" << endl;
+			cout << "[ The End ]" << endl;
+			cout << "----------------------------------------" << endl;
+			break;
+		}
 		player.endTurn();
 		player.showStats();
 
 	}
-	
-	
-	// 아이템생성
-	//Item* newItem(itemArray[randomItemNum]);
-
-	// 인벤토리 추가
-	//inventory.addItem(itemArray[randomItemNum]);
-
-	// 플레이어 행동 선택
-	int playerPos;
-	//cout << "[행동을 선택하세요.]";
-	//cin >> playerPos;
-
-	// 각 행동 함수
-
-	// 플레이어 스탯 및 인벤토리 상태 출력
-
-	// 퀘스트아이템 10개 획득 시 게임 종료
-
-
-
 
 	return 0;
 }
