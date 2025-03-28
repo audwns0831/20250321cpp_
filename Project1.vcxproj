@@ -133,11 +133,19 @@
     <ClCompile Include="0324.cpp" />
     <ClCompile Include="0324_Practice.cpp" />
     <ClCompile Include="Array.cpp" />
+    <ClCompile Include="Behavioral_Pattern.cpp" />
+    <ClCompile Include="Behavioral_Pattern_Command.cpp" />
+    <ClCompile Include="Behavioral_Pattern_Observer.cpp" />
+    <ClCompile Include="Behavior_Pattern_Strategy.cpp" />
     <ClCompile Include="Class.cpp" />
     <ClCompile Include="Class2.cpp" />
     <ClCompile Include="Class3.cpp" />
     <ClCompile Include="Conditional.cpp" />
+    <ClCompile Include="Creational_Pattern_Abstract.cpp" />
+    <ClCompile Include="Creational_Pattern_Builder.cpp" />
+    <ClCompile Include="Creational_Pattern_FactoryMethod.cpp" />
     <ClCompile Include="Dummy.cpp" />
+    <ClCompile Include="Exception.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="FunctionPointer.cpp" />
     <ClCompile Include="Hello.cpp" />
@@ -157,6 +165,7 @@
     <ClCompile Include="STL.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="Struct.cpp" />
+    <ClCompile Include="Structural_Pattern_.cpp" />
     <ClCompile Include="Template.cpp" />
   </ItemGroup>
   <ItemGroup>
