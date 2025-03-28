@@ -139,9 +139,11 @@
     <ClCompile Include="Conditional.cpp" />
     <ClCompile Include="Dummy.cpp" />
     <ClCompile Include="Function.cpp" />
+    <ClCompile Include="FunctionPointer.cpp" />
     <ClCompile Include="Hello.cpp" />
     <ClCompile Include="DataType.cpp" />
     <ClCompile Include="Iteration.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="OOP.cpp" />
     <ClCompile Include="OOP_Abstraction.cpp" />
@@ -151,9 +153,11 @@
     <ClCompile Include="Operator.cpp" />
     <ClCompile Include="Pointer.cpp" />
     <ClCompile Include="Singleton.cpp" />
+    <ClCompile Include="SmartPointer.cpp" />
     <ClCompile Include="STL.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="Struct.cpp" />
+    <ClCompile Include="Template.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dummy.h" />

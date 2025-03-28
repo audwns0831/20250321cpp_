@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int main() {
+int main_() {
 	vector<string> _itemArray[] = {
 		{"Equip", "LongSword", "Weapon", "30"},
 		{"Equip", "ShortSword", "Weapon", "10"},
